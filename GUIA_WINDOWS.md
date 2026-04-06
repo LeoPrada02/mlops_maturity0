@@ -59,6 +59,8 @@ dvc remote add -d local_storage .dvc_storage
 
 ## 4. Ejecutar la preparación y entrenamiento
 
+El script de entrenamiento registrará la corrida en MLflow usando el backend local `sqlite:///mlflow.db` aunque todavía no hayas levantado la UI.
+
 ```bash
 python -m src.data.make_dataset
 python -m src.models.train
@@ -73,7 +75,8 @@ dvc repro
 ### Qué está pasando aquí
 - `make_dataset` genera train/test/reference/scoring.
 - `train` entrena el modelo, guarda artefactos y métricas.
-- si MLflow está disponible y levantado, también registra la corrida y el modelo.
+- MLflow registra la corrida en la base local `mlflow.db`.
+- cuando luego levantes la UI de MLflow, verás esas corridas.
 
 ---
 

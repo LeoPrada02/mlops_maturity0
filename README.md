@@ -68,7 +68,7 @@ mlops_local_churn_demo/
 1. **Datos**: dataset sintético ya incluido.
 2. **Preparación**: split train/test y armado de datasets de referencia y scoring.
 3. **Entrenamiento**: pipeline sklearn con preprocessing + logistic regression.
-4. **Tracking**: métricas y registro en MLflow.
+4. **Tracking**: métricas y registro en MLflow usando `mlflow.db` local.
 5. **Versionado**: pipeline reproducible en DVC y control de código con Git.
 6. **Serving**: API de inferencia en FastAPI.
 7. **Contenedores**: stack local en Docker Compose.

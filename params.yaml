@@ -25,6 +25,6 @@ artifacts:
   confusion_matrix_path: artifacts/plots/confusion_matrix.png
 
 mlflow:
-  tracking_uri: http://localhost:5000
+  tracking_uri: sqlite:///mlflow.db
   experiment_name: churn_local_demo
   registered_model_name: modelo_churn_local
