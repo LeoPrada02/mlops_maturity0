@@ -1,0 +1,30 @@
+dataset:
+  raw_path: data/raw/churn_sintetico.csv
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
+  reference_path: data/reference/reference_data.csv
+  scoring_path: data/scoring/scoring_samples.csv
+  target_column: churn
+  test_size: 0.2
+  random_state: 42
+
+model:
+  type: logistic_regression
+  threshold: 0.5
+  max_iter: 1500
+  class_weight: balanced
+
+monitoring:
+  current_data_path: monitoring/current_data.csv
+  evidently_report_path: monitoring/reports/evidently_report.html
+  evidently_summary_path: monitoring/reports/evidently_summary.json
+
+artifacts:
+  model_path: artifacts/model/model.joblib
+  metrics_path: artifacts/metrics/metrics.json
+  confusion_matrix_path: artifacts/plots/confusion_matrix.png
+
+mlflow:
+  tracking_uri: http://localhost:5000
+  experiment_name: churn_local_demo
+  registered_model_name: modelo_churn_local

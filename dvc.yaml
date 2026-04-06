@@ -1,0 +1,53 @@
+stages:
+  prepare:
+    cmd: python -m src.data.make_dataset
+    deps:
+      - src/data/make_dataset.py
+      - src/common/config.py
+      - src/common/features.py
+      - params.yaml
+      - data/raw/churn_sintetico.csv
+    params:
+      - dataset
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - data/reference/reference_data.csv
+      - data/scoring/scoring_samples.csv
+
+  train:
+    cmd: python -m src.models.train
+    deps:
+      - src/models/train.py
+      - src/common/config.py
+      - src/common/features.py
+      - params.yaml
+      - data/processed/train.csv
+      - data/processed/test.csv
+    params:
+      - model
+      - mlflow
+      - artifacts
+    outs:
+      - artifacts/model/model.joblib
+    metrics:
+      - artifacts/metrics/metrics.json:
+          cache: false
+    plots:
+      - artifacts/plots/confusion_matrix.png:
+          cache: false
+
+  monitor:
+    cmd: python -m src.monitoring.run_evidently
+    deps:
+      - src/monitoring/run_evidently.py
+      - src/common/config.py
+      - src/common/features.py
+      - params.yaml
+      - data/reference/reference_data.csv
+      - monitoring/current_data.csv
+    params:
+      - monitoring
+    outs:
+      - monitoring/reports/evidently_report.html
+      - monitoring/reports/evidently_summary.json

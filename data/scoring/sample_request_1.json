@@ -1,0 +1,17 @@
+{
+  "tenure_months": 20,
+  "monthly_charge": 47.98,
+  "total_charges": 914.3,
+  "support_tickets": 0,
+  "late_payments": 0,
+  "avg_monthly_usage_gb": 70.4,
+  "contract_type": "bianual",
+  "payment_method": "credito",
+  "internet_service": "fibra",
+  "has_streaming": 1,
+  "has_security_pack": 0,
+  "num_products": 1,
+  "region": "sur",
+  "customer_age": 54,
+  "is_promo": 1
+}
