@@ -20,3 +20,7 @@ def resolve_path(relative_path: str) -> Path:
 
 def ensure_parent(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+
+
+print(PROJECT_ROOT)
+print(PARAMS_FILE)
