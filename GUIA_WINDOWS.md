@@ -145,6 +145,8 @@ Invoke-RestMethod `
 ```bash
 python scripts/generate_traffic.py --n 100
 ```
+NOTA LEO: el comando de arriba no funciono porque ese script no sabe donde esta src al momento de importar
+usarlo asi: python -m scripts.generate_traffic --n 100
 
 Para forzar drift:
 

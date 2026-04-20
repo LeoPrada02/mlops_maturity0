@@ -53,3 +53,4 @@ services:
       - ./docker/grafana/dashboards:/var/lib/grafana/dashboards
     depends_on:
       - prometheus
+

@@ -53,7 +53,9 @@ def main() -> None:
 
     snapshot.save_html(str(report_path))
     with open(summary_path, "w", encoding="utf-8") as f:
-        json.dump(snapshot.dict(), f, indent=2, ensure_ascii=False)
+        f.write(snapshot.json())   #CORECCION
+#with open(summary_path, "w", encoding="utf-8") as f:
+#        json.dump(snapshot.dict(), f, indent=2, ensure_ascii=False) // ANTES ESTABA ASI, DABA ERROR POR OBJETOS NO SERIALIZABLES, USAMOS EL MÉTODO .json() DE SNAPSHOT QUE YA DEVUELVE UN STRING JSON SERIALIZABLE
 
     print(f"Reporte Evidently HTML: {report_path}")
     print(f"Resumen JSON: {summary_path}")
