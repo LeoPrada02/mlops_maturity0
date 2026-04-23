@@ -28,6 +28,7 @@ from src.common.features import CATEGORICAL_COLUMNS, FEATURE_COLUMNS, NUMERIC_CO
 try:
     import mlflow
     import mlflow.sklearn
+    import mlflow.data
 
     MLFLOW_AVAILABLE = True
 except Exception:
@@ -100,7 +101,10 @@ def log_to_mlflow(
             }
         )
         mlflow.log_metrics(metrics)
-
+        dataset = mlflow.data.from_pandas(
+            train_df, source="train.csv", targets = TARGET_COLUMN
+        )
+        mlflow.log_input(dataset, context="training")
         input_example = test_df[FEATURE_COLUMNS].head(2)
         signature = mlflow.models.infer_signature(input_example, model.predict(input_example))
 
